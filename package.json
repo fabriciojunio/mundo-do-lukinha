@@ -1,0 +1,15 @@
+{
+  "name": "mundo-do-lukinha",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "lint": "pnpm --filter web lint",
+    "test": "pnpm --filter web test",
+    "test:watch": "pnpm --filter web test:watch",
+    "typecheck": "pnpm --filter web typecheck",
+    "check-all": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  }
+}
