@@ -74,7 +74,7 @@ export function updateEnemies(enemies: Enemy[]): { updated: Enemy[]; leaked: num
 
 export function towerAttack(towers: Tower[], enemies: Enemy[], tick: number): { enemies: Enemy[]; gold: number } {
   let gold = 0;
-  let updatedEnemies = [...enemies];
+  const updatedEnemies = [...enemies];
   for (const tower of towers) {
     if (tick - tower.lastShot < tower.cooldown) continue;
     const tx = tower.col * 60 + 30; const ty = tower.row * 60 + 30;
