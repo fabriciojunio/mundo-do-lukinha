@@ -24,3 +24,4 @@ User-agent: FacebookBot
 Disallow: /
 
 Sitemap: https://mundo-do-lukinha.vercel.app/sitemap.xml
+
