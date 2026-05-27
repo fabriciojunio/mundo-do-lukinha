@@ -13,7 +13,7 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: false },
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: [] } : false,
+    removeConsole: process.env.NODE_ENV === 'production',
   },
   images: {
     formats: ['image/avif', 'image/webp'],

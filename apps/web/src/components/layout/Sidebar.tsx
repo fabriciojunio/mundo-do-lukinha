@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { Home, Gamepad2, User, Trophy, Shield } from 'lucide-react';
@@ -13,10 +14,35 @@ const MAIN_NAV = [
   { href: '/pais', label: 'Área dos Pais', icon: Shield },
 ];
 
-export function Sidebar() {
-  const pathname = usePathname();
+function CategoryLinks() {
   const searchParams = useSearchParams();
   const activeCategory = searchParams.get('categoria');
+
+  return (
+    <>
+      {GAME_CATEGORIES.map((cat: GameCategory) => {
+        const isCatActive = activeCategory === cat;
+        return (
+          <Link
+            key={cat}
+            href={`/jogos?categoria=${cat}`}
+            className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-body transition-colors ${
+              isCatActive
+                ? 'bg-primary/15 text-primary font-semibold'
+                : 'text-text-light hover:bg-surface-2 hover:text-text-main'
+            }`}
+          >
+            <span className="text-base leading-none">{CATEGORY_EMOJIS[cat]}</span>
+            <span>{CATEGORY_LABELS[cat]}</span>
+          </Link>
+        );
+      })}
+    </>
+  );
+}
+
+export function Sidebar() {
+  const pathname = usePathname();
 
   return (
     <aside className="hidden md:flex flex-col w-56 shrink-0 bg-surface border-r border-border h-[calc(100vh-64px)] sticky top-16 overflow-y-auto py-4 px-3">
@@ -45,23 +71,16 @@ export function Sidebar() {
           Categorias
         </p>
         <div className="flex flex-col gap-0.5">
-          {GAME_CATEGORIES.map((cat: GameCategory) => {
-            const isCatActive = activeCategory === cat;
-            return (
-              <Link
-                key={cat}
-                href={`/jogos?categoria=${cat}`}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-body transition-colors ${
-                  isCatActive
-                    ? 'bg-primary/15 text-primary font-semibold'
-                    : 'text-text-light hover:bg-surface-2 hover:text-text-main'
-                }`}
-              >
+          <Suspense fallback={
+            <>{GAME_CATEGORIES.map((cat) => (
+              <div key={cat} className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-body text-text-light">
                 <span className="text-base leading-none">{CATEGORY_EMOJIS[cat]}</span>
                 <span>{CATEGORY_LABELS[cat]}</span>
-              </Link>
-            );
-          })}
+              </div>
+            ))}</>
+          }>
+            <CategoryLinks />
+          </Suspense>
         </div>
       </div>
     </aside>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { Suspense, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Navigation } from '@/components/layout/Navigation';
@@ -11,7 +11,7 @@ import { useAgeGroup } from '@/hooks/useAgeGroup';
 import { gameRegistry, getGamesForAgeGroup } from '@/games/registry';
 import { GAME_CATEGORIES, type GameCategory } from '@/types/game';
 
-export default function JogosPage() {
+function JogosContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { ageGroup } = useAgeGroup();
@@ -60,5 +60,13 @@ export default function JogosPage() {
       </div>
       <Navigation />
     </div>
+  );
+}
+
+export default function JogosPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-bg" />}>
+      <JogosContent />
+    </Suspense>
   );
 }
