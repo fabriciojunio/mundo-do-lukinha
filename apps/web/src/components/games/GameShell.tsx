@@ -49,8 +49,8 @@ export function GameShell({
   }, []);
 
   return (
-    <div className="flex flex-col h-full min-h-[calc(100vh-140px)]">
-      <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-100">
+    <div className="flex flex-col h-full min-h-[calc(100vh-140px)] bg-bg">
+      <div className="flex items-center justify-between px-4 py-3 bg-surface border-b border-border">
         <button
           onClick={onBack}
           className="flex items-center gap-1 text-text-light hover:text-text-main transition-colors min-h-[44px] min-w-[44px]"
@@ -69,7 +69,7 @@ export function GameShell({
           {showTimer && (
             <span
               className={`font-mono font-bold text-sm px-2 py-1 rounded-lg ${
-                timeLeft <= 10 ? 'bg-error/15 text-error animate-pulse' : 'bg-gray-100 text-text-main'
+                timeLeft <= 10 ? 'bg-error/20 text-error animate-pulse' : 'bg-surface-2 text-text-main'
               }`}
             >
               {formatTime(timeLeft)}
@@ -77,7 +77,7 @@ export function GameShell({
           )}
           <button
             onClick={togglePause}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="p-2 rounded-lg hover:bg-surface-2 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center text-text-light hover:text-text-main"
           >
             {isPaused ? <Play size={20} /> : <Pause size={20} />}
           </button>
@@ -86,11 +86,11 @@ export function GameShell({
 
       <div className="flex-1 relative">
         {isPaused && (
-          <div className="absolute inset-0 z-30 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center gap-4">
+          <div className="absolute inset-0 z-30 bg-bg/95 backdrop-blur-sm flex flex-col items-center justify-center gap-4">
             <p className="text-4xl">⏸️</p>
             <p className="font-display font-bold text-xl text-text-main">Jogo Pausado</p>
             <Button onClick={togglePause} variant="primary" size="lg">
-              Continuar ▶️
+              Continuar
             </Button>
             <Button onClick={onBack} variant="ghost" size="md">
               Sair do Jogo

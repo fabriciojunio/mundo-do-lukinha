@@ -49,7 +49,7 @@ const LEVELS: CodeLevel[] = [
   },
   {
     id: 'l2', name: 'Virando', difficulty: 1,
-    grid: [[S, E], [E, E], [E, G]], start: { row: 0, col: 0 }, startDir: 'down', goal: { row: 2, col: 1 },
+    grid: [[E, S], [E, E], [G, E]], start: { row: 0, col: 1 }, startDir: 'down', goal: { row: 2, col: 0 },
     maxCommands: 5, availableCommands: ['forward', 'turn-right'],
   },
   {

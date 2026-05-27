@@ -17,8 +17,8 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden md:flex flex-col w-56 shrink-0 bg-white border-r border-gray-100 h-[calc(100vh-64px)] sticky top-16 overflow-y-auto py-4 px-3">
-      <div className="flex flex-col gap-1 mb-6">
+    <aside className="hidden md:flex flex-col w-56 shrink-0 bg-surface border-r border-border h-[calc(100vh-64px)] sticky top-16 overflow-y-auto py-4 px-3">
+      <div className="flex flex-col gap-0.5 mb-6">
         {MAIN_NAV.map(({ href, label, icon: Icon }) => {
           const isActive = pathname === href;
           return (
@@ -27,19 +27,19 @@ export function Sidebar() {
               href={href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-body font-semibold text-sm transition-colors ${
                 isActive
-                  ? 'bg-primary/10 text-primary'
-                  : 'text-text-light hover:bg-gray-50 hover:text-text-main'
+                  ? 'bg-primary/15 text-primary'
+                  : 'text-text-light hover:bg-surface-2 hover:text-text-main'
               }`}
             >
-              <Icon size={20} />
+              <Icon size={18} />
               <span>{label}</span>
             </Link>
           );
         })}
       </div>
 
-      <div className="border-t border-gray-100 pt-4">
-        <p className="px-3 text-xs font-body font-bold text-text-light uppercase tracking-wider mb-2">
+      <div className="border-t border-border pt-4">
+        <p className="px-3 text-[10px] font-body font-bold text-text-light uppercase tracking-widest mb-2">
           Categorias
         </p>
         <div className="flex flex-col gap-0.5">
@@ -47,9 +47,9 @@ export function Sidebar() {
             <Link
               key={cat}
               href={`/jogos?categoria=${cat}`}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-body text-text-light hover:bg-gray-50 hover:text-text-main transition-colors"
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-body text-text-light hover:bg-surface-2 hover:text-text-main transition-colors"
             >
-              <span>{CATEGORY_EMOJIS[cat]}</span>
+              <span className="text-base leading-none">{CATEGORY_EMOJIS[cat]}</span>
               <span>{CATEGORY_LABELS[cat]}</span>
             </Link>
           ))}

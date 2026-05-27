@@ -10,11 +10,11 @@ export function Header() {
   const { player, xpProgress } = usePlayer();
 
   return (
-    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-40 bg-surface border-b border-border">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 shrink-0">
           <span className="text-2xl">🌟</span>
-          <span className="font-display font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hidden sm:inline">
+          <span className="font-display font-bold text-xl text-primary hidden sm:inline">
             Mundo do Lukinha
           </span>
         </Link>

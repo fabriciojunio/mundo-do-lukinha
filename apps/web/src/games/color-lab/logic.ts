@@ -14,7 +14,21 @@ export interface ColorMission {
   hint: string;
 }
 
+const isRed = (c: RGB) => c.r > 200 && c.g < 50 && c.b < 50;
+const isBlue = (c: RGB) => c.r < 50 && c.g < 50 && c.b > 200;
+const isYellow = (c: RGB) => c.r > 200 && c.g > 200 && c.b < 50;
+
 export function mixColors(c1: RGB, c2: RGB): RGB {
+  const colors = [c1, c2];
+  const hasRed = colors.some(isRed);
+  const hasBlue = colors.some(isBlue);
+  const hasYellow = colors.some(isYellow);
+
+  // Modelo RYB (mistura de tintas educacional)
+  if (hasBlue && hasYellow && !hasRed) return { r: 0, g: 128, b: 0 };   // Verde
+  if (hasRed && hasYellow && !hasBlue) return { r: 255, g: 128, b: 0 }; // Laranja
+  if (hasRed && hasBlue && !hasYellow) return { r: 128, g: 0, b: 128 }; // Roxo
+
   return {
     r: Math.round((c1.r + c2.r) / 2),
     g: Math.round((c1.g + c2.g) / 2),

@@ -1,11 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
 import type { GameConfig } from '@/types/game';
 import { CATEGORY_LABELS } from '@/types/game';
-import { AGE_GROUP_CONFIGS, type AgeGroup } from '@/types/age-group';
 
 interface GameCardProps {
   config: GameConfig;
@@ -14,32 +11,29 @@ interface GameCardProps {
 export function GameCard({ config }: GameCardProps) {
   return (
     <Link href={`/jogos/${config.id}`}>
-      <Card hover padding="md" className="h-full">
-        <div className="flex flex-col gap-3">
-          <div
-            className="w-full aspect-video rounded-xl flex items-center justify-center text-5xl"
-            style={{ backgroundColor: `${config.color}20` }}
-          >
-            {config.icon}
-          </div>
-          <div>
-            <h3 className="font-display font-bold text-text-main text-lg leading-tight">{config.name}</h3>
-            <p className="text-sm font-body text-text-light mt-1 line-clamp-2">{config.description}</p>
-          </div>
-          <div className="flex items-center justify-between">
-            <Badge variant="accent" size="sm">
+      <div className="bg-surface border border-border rounded-2xl overflow-hidden transition-all duration-200 hover:border-primary/50 hover:bg-surface-2 cursor-pointer group">
+        <div
+          className="w-full h-24 flex items-center justify-center text-5xl"
+          style={{ backgroundColor: `${config.color}18` }}
+        >
+          {config.icon}
+        </div>
+        <div className="p-4">
+          <h3 className="font-display font-bold text-text-main text-base leading-tight group-hover:text-primary transition-colors">
+            {config.name}
+          </h3>
+          <p className="text-xs font-body text-text-light mt-1 line-clamp-2">{config.description}</p>
+          <div className="flex items-center justify-between mt-3">
+            <span
+              className="text-xs font-body font-semibold px-2 py-0.5 rounded-full"
+              style={{ backgroundColor: `${config.color}20`, color: config.color }}
+            >
               {CATEGORY_LABELS[config.category]}
-            </Badge>
-            <div className="flex gap-0.5">
-              {config.ageGroups.map((ag: AgeGroup) => (
-                <span key={ag} className="text-sm" title={AGE_GROUP_CONFIGS[ag].labelPt}>
-                  {AGE_GROUP_CONFIGS[ag].emoji}
-                </span>
-              ))}
-            </div>
+            </span>
+            <span className="text-xs text-text-light font-body">{config.estimatedMinutes} min</span>
           </div>
         </div>
-      </Card>
+      </div>
     </Link>
   );
 }

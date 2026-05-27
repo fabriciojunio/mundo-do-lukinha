@@ -3,19 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #4ECDC4;
-  --color-secondary: #7C3AED;
-  --color-accent: #F97316;
-  --color-green: #22C55E;
-  --color-yellow: #EAB308;
-  --color-pink: #EC4899;
-  --color-bg-light: #FAFAFA;
-  --color-bg-dark: #1A1A2E;
-  --color-text: #2D2D3F;
-  --color-text-light: #6B7280;
-  --color-success: #10B981;
-  --color-error: #F87171;
-  --color-warning: #FBBF24;
+  /* Marca */
+  --primary: #4ECDC4;
+  --secondary: #7C3AED;
+  --accent: #F97316;
+  --success: #34D399;
+  --error: #F87171;
+  --warning: #FBBF24;
+
+  /* Superfícies dark (sempre) */
+  --bg: #0D0D1A;
+  --surface: #14142A;
+  --surface-2: #1C1C36;
+  --border: #2A2A48;
+
+  /* Texto */
+  --text: #EEEEF8;
+  --text-muted: #8585A8;
 }
 
 html {
@@ -23,11 +27,43 @@ html {
 }
 
 body {
-  background-color: var(--color-bg-light);
-  color: var(--color-text);
-  font-family: var(--font-nunito), 'Quicksand', 'Poppins', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', 'Quicksand', 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remapear classes Tailwind padrão para dark */
+.bg-white {
+  background-color: var(--surface) !important;
+}
+.bg-white\/90,
+.bg-white\/95 {
+  background-color: color-mix(in srgb, var(--surface) 92%, transparent) !important;
+}
+.bg-gray-50 {
+  background-color: var(--surface-2) !important;
+}
+.bg-gray-100 {
+  background-color: var(--surface-2) !important;
+}
+.bg-gray-700 {
+  background-color: #3a3a5c !important;
+}
+
+.border-gray-50,
+.border-gray-100 {
+  border-color: var(--border) !important;
+}
+.border-gray-200 {
+  border-color: var(--border) !important;
+}
+
+.text-gray-700,
+.text-gray-800,
+.text-gray-900 {
+  color: var(--text) !important;
 }
 
 /* Touch optimization */
@@ -35,7 +71,7 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Hide scrollbar for category filter */
+/* Esconder scrollbar horizontal no filtro de categorias */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -44,14 +80,29 @@ body {
   display: none;
 }
 
-/* Selection color */
+/* Seleção */
 ::selection {
   background-color: rgba(78, 205, 196, 0.3);
 }
 
-/* Focus visible for accessibility */
+/* Focus acessível */
 :focus-visible {
-  outline: 3px solid var(--color-primary);
+  outline: 3px solid var(--primary);
   outline-offset: 2px;
   border-radius: 8px;
+}
+
+/* Scrollbar global */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }
