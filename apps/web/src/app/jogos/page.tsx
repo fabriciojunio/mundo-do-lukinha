@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Header } from '@/components/layout/Header';
 import { Navigation } from '@/components/layout/Navigation';
 import { Sidebar } from '@/components/layout/Sidebar';
@@ -8,11 +9,26 @@ import { GameGrid } from '@/components/games/GameGrid';
 import { CategoryFilter } from '@/components/games/CategoryFilter';
 import { useAgeGroup } from '@/hooks/useAgeGroup';
 import { gameRegistry, getGamesForAgeGroup } from '@/games/registry';
-import type { GameCategory } from '@/types/game';
+import { GAME_CATEGORIES, type GameCategory } from '@/types/game';
 
 export default function JogosPage() {
-  const [selectedCategory, setSelectedCategory] = useState<GameCategory | 'all'>('all');
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { ageGroup } = useAgeGroup();
+
+  const rawParam = searchParams.get('categoria');
+  const selectedCategory: GameCategory | 'all' =
+    rawParam && (GAME_CATEGORIES as readonly string[]).includes(rawParam)
+      ? (rawParam as GameCategory)
+      : 'all';
+
+  const handleSelect = (cat: GameCategory | 'all') => {
+    if (cat === 'all') {
+      router.push('/jogos');
+    } else {
+      router.push(`/jogos?categoria=${cat}`);
+    }
+  };
 
   const filteredGames = useMemo(() => {
     let games = getGamesForAgeGroup(ageGroup);
@@ -35,7 +51,7 @@ export default function JogosPage() {
             </h1>
 
             <div className="mb-6">
-              <CategoryFilter selected={selectedCategory} onSelect={setSelectedCategory} />
+              <CategoryFilter selected={selectedCategory} onSelect={handleSelect} />
             </div>
 
             <GameGrid games={filteredGames} />

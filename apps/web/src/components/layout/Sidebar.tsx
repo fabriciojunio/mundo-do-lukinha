@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { Home, Gamepad2, User, Trophy, Shield } from 'lucide-react';
 import { GAME_CATEGORIES, CATEGORY_LABELS, CATEGORY_EMOJIS, type GameCategory } from '@/types/game';
 
@@ -15,6 +15,8 @@ const MAIN_NAV = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const activeCategory = searchParams.get('categoria');
 
   return (
     <aside className="hidden md:flex flex-col w-56 shrink-0 bg-surface border-r border-border h-[calc(100vh-64px)] sticky top-16 overflow-y-auto py-4 px-3">
@@ -43,16 +45,23 @@ export function Sidebar() {
           Categorias
         </p>
         <div className="flex flex-col gap-0.5">
-          {GAME_CATEGORIES.map((cat: GameCategory) => (
-            <Link
-              key={cat}
-              href={`/jogos?categoria=${cat}`}
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-body text-text-light hover:bg-surface-2 hover:text-text-main transition-colors"
-            >
-              <span className="text-base leading-none">{CATEGORY_EMOJIS[cat]}</span>
-              <span>{CATEGORY_LABELS[cat]}</span>
-            </Link>
-          ))}
+          {GAME_CATEGORIES.map((cat: GameCategory) => {
+            const isCatActive = activeCategory === cat;
+            return (
+              <Link
+                key={cat}
+                href={`/jogos?categoria=${cat}`}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-body transition-colors ${
+                  isCatActive
+                    ? 'bg-primary/15 text-primary font-semibold'
+                    : 'text-text-light hover:bg-surface-2 hover:text-text-main'
+                }`}
+              >
+                <span className="text-base leading-none">{CATEGORY_EMOJIS[cat]}</span>
+                <span>{CATEGORY_LABELS[cat]}</span>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </aside>
