@@ -4,18 +4,21 @@
 
 :root {
   /* Marca */
-  --primary: #4ECDC4;
-  --secondary: #7C3AED;
-  --accent: #F97316;
+  --primary: #06e8c8;
+  --secondary: #9333ea;
+  --accent: #fb923c;
   --success: #34D399;
   --error: #F87171;
   --warning: #FBBF24;
 
   /* Superfícies dark (sempre) */
-  --bg: #0D0D1A;
-  --surface: #14142A;
-  --surface-2: #1C1C36;
-  --border: #2A2A48;
+  --bg: #080818;
+  --surface: #0f0f28;
+  --surface-2: #181836;
+  --border: #252550;
+
+  --glow-primary: rgba(6, 232, 200, 0.14);
+  --glow-secondary: rgba(147, 51, 234, 0.12);
 
   /* Texto */
   --text: #EEEEF8;
@@ -82,12 +85,12 @@ body {
 
 /* Seleção */
 ::selection {
-  background-color: rgba(78, 205, 196, 0.3);
+  background-color: rgba(6, 232, 200, 0.25);
 }
 
 /* Focus acessível */
 :focus-visible {
-  outline: 3px solid var(--primary);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: 8px;
 }
