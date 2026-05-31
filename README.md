@@ -4,7 +4,7 @@ Plataforma educativa com jogos divertidos para crianças de 3 a 14 anos.
 
 ## Sobre
 
-Mundo do Lukinha é um ecossistema de jogos educativos que ensina matérias escolares, habilidades de vida, programação e valores humanos — tudo de forma divertida e encorajadora.
+Mundo do Lukinha é um ecossistema de jogos educativos que ensina matérias escolares, habilidades de vida, programação e valores humanos: tudo de forma divertida e encorajadora.
 
 Feito com amor por um irmão mais velho para o Lukinha (7 anos) e futuras gerações.
 
@@ -13,7 +13,7 @@ Feito com amor por um irmão mais velho para o Lukinha (7 anos) e futuras geraç
 - **Divertido primeiro, educativo de forma natural**
 - **Nunca punitivo, sempre encorajador**
 - **Adaptação automática por faixa etária (3-14 anos)**
-- **Custo zero — todas as ferramentas são gratuitas**
+- **Custo zero: todas as ferramentas são gratuitas**
 
 ## Faixas Etárias
 
@@ -26,12 +26,12 @@ Feito com amor por um irmão mais velho para o Lukinha (7 anos) e futuras geraç
 
 ## Jogos Incluídos (Fase 1)
 
-- 🔢 **Batalha dos Números** — Matemática
-- 🧠 **Jogo da Memória** — Raciocínio
-- 🔍 **Caça-Palavras** — Português
-- 🦕 **Dino Runner** — Coordenação
-- 🎨 **Laboratório de Cores** — Artes/Ciências
-- 🧪 **Quiz Aventura** — Conhecimento Geral
+- 🔢 **Batalha dos Números**: Matemática
+- 🧠 **Jogo da Memória**: Raciocínio
+- 🔍 **Caça-Palavras**: Português
+- 🦕 **Dino Runner**: Coordenação
+- 🎨 **Laboratório de Cores**: Artes/Ciências
+- 🧪 **Quiz Aventura**: Conhecimento Geral
 
 ## Stack Tecnológica
 

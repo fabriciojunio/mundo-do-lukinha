@@ -1,4 +1,4 @@
-# LGPD — Conformidade
+# LGPD: Conformidade
 
 ## Base Legal
 Art. 14 LGPD: dados de crianças requerem consentimento específico do responsável.

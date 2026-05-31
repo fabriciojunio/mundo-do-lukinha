@@ -1,4 +1,4 @@
-# Segurança — Mundo do Lukinha
+# Segurança: Mundo do Lukinha
 
 ## Princípios
 - Crianças são o público. Segurança é requisito absoluto
